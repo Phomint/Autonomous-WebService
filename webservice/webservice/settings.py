@@ -25,7 +25,7 @@ SECRET_KEY = 'nuve7vdg%gqyfbicc%w3t-=-g5&856o#z78ejq_&_1@ujq8gg^'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['phomint.pythonanywhere.com','localhost']
 
 
 # Application definition
