@@ -1,18 +1,18 @@
 from django.shortcuts import render
 
-from .models import Autonomo
-from .serializer import AutonomoSerializer
+from .models import Servico
+from .serializer import ServicoSerializer
 
 from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
 
-class AutonomoList(APIView):
-    serializer_class = AutonomoSerializer
+class ServicoList(APIView):
+    serializer_class = ServicoSerializer
 
     def get(self, request, format=None):
-        serializer = self.serializer_class(Autonomo.objects.all(), many = True)
+        serializer = self.serializer_class(Servico.objects.all(), many = True)
         return Response(serializer.data)
 
     def post(self, request, format=None):
@@ -23,23 +23,23 @@ class AutonomoList(APIView):
         else:
             return Response({"message":"403 Forbidden"}, status=status.HTTP_409_CONFLICT)
 
-class AutonomoView(APIView):
-    serializer_class = AutonomoSerializer
+class ServicoView(APIView):
+    serializer_class = ServicoSerializer
 
     def get(self, request, pk, format=None):
-        autonomo = Autonomo.objects.get(pk=pk)
-        serializer = self.serializer_class(autonomo)
+        Servico = Servico.objects.get(pk=pk)
+        serializer = self.serializer_class(Servico)
         return Response(serializer.data)
 
     def put(self, request, pk, format=None):
-        autonomo = Autonomo.objects.get(pk=pk)
-        serializer = self.serializer_class(autonomo, data=request.data)
+        Servico = Servico.objects.get(pk=pk)
+        serializer = self.serializer_class(Servico, data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, pk, format=None):
-        autonomo = Autonomo.objects.get(pk=pk)
-        autonomo.delete()
+        Servico = Servico.objects.get(pk=pk)
+        Servico.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
