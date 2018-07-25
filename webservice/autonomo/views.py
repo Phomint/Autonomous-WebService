@@ -23,8 +23,22 @@ class AutonomoList(APIView):
             return Response({"message":"403 Forbidden"}, status=status.HTTP_409_CONFLICT)
 
 class AutonomoView(APIView):
+    serializer_class = AutonomoSerializer
 
     def get(self, request, pk, format=None):
-        id = Autonomo.objects.get(pk=pk)
-        serializer = AutonomoSerializer(id)
+        autonomo = Autonomo.objects.get(pk=pk)
+        serializer = self.serializer_class(autonomo)
         return Response(serializer.data)
+
+    def put(self, request, pk, format=None):
+        autonomo = Autonomo.objects.get(pk=pk)
+        serializer = self.serializer_class(autonomo, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def delete(self, request, pk, format=None):
+        autonomo = Autonomo.objects.get(pk=pk)
+        autonomo.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
