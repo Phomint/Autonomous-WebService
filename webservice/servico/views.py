@@ -26,13 +26,19 @@ class ServicoList(APIView):
 class ServicoView(APIView):
     serializer_class = ServicoSerializer
 
+    def get_object(self, pk):
+        try:
+            return Servico.objects.get(pk=pk)
+        except Servico.DoesNotExist:
+            raise Http404
+
     def get(self, request, pk, format=None):
-        Servico = Servico.objects.get(pk=pk)
+        Servico = self.get_object(pk)
         serializer = self.serializer_class(Servico)
         return Response(serializer.data)
 
     def put(self, request, pk, format=None):
-        Servico = Servico.objects.get(pk=pk)
+        Servico = self.get_object(pk)
         serializer = self.serializer_class(Servico, data=request.data)
         if serializer.is_valid():
             serializer.save()
@@ -40,6 +46,6 @@ class ServicoView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, pk, format=None):
-        Servico = Servico.objects.get(pk=pk)
+        Servico = self.get_object(pk)
         Servico.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
