@@ -1,18 +1,16 @@
 from django.shortcuts import render
 
-from .models import Autonomo
-from .serializer import AutonomoSerializer
+from .models import Usuario
+from .serializer import UsuarioSerializer
 
 from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
-
-
-class AutonomoList(APIView):
-    serializer_class = AutonomoSerializer
+class UsuarioList(APIView):
+    serializer_class = UsuarioSerializer
 
     def get(self, request, format=None):
-        serializer = self.serializer_class(Autonomo.objects.all(), many = True)
+        serializer = self.serializer_class(Usuario.objects.all(), many = True)
         return Response(serializer.data)
 
     def post(self, request, format=None):
@@ -23,29 +21,29 @@ class AutonomoList(APIView):
         else:
             return Response({"message":"403 Forbidden"}, status=status.HTTP_409_CONFLICT)
 
-class AutonomoView(APIView):
-    serializer_class = AutonomoSerializer
+class UsuarioView(APIView):
+    serializer_class = UsuarioSerializer
 
     def get_object(self, pk):
         try:
-            return Autonomo.objects.get(pk=pk)
-        except Autonomo.DoesNotExist:
+            return Usuario.objects.get(pk=pk)
+        except Usuario.DoesNotExist:
             raise Http404
 
     def get(self, request, pk, format=None):
-        autonomo = self.get_object(pk)
-        serializer = self.serializer_class(autonomo)
+        Usuario = self.get_object(pk)
+        serializer = self.serializer_class(Usuario)
         return Response(serializer.data)
 
     def put(self, request, pk, format=None):
-        autonomo = self.get_object(pk)
-        serializer = self.serializer_class(autonomo, data=request.data)
+        Usuario = self.get_object(pk)
+        serializer = self.serializer_class(Usuario, data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, pk, format=None):
-        autonomo = self.get(pk)
-        autonomo.delete()
+        Usuario = self.get_object(pk)
+        Usuario.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
