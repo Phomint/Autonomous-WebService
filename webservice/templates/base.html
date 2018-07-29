@@ -1,0 +1,102 @@
+{% load staticfiles %}
+<!--DOCTYPE html -->
+<html>
+  <head>
+    <title>{% block head_title %}Autonomous{% endblock head_title %}</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.purple-deep_purple.min.css" />
+    <link rel="stylesheet" href='{% static "css/base.css" %}'/>
+    <style>
+    #view-source {
+      position: fixed;
+      display: block;
+      right: 0;
+      bottom: 0;
+      margin-right: 40px;
+      margin-bottom: 40px;
+      z-index: 900;
+    }
+    </style>
+  </head>
+  <body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
+    <!-- Cabeçalho  simples com tabs -->
+  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header class="mdl-layout__header mdl-layout__header--scroll mdl-color--primary">
+      <div class="mdl-layout--large-screen-only mdl-layout__header-row">
+        </div>
+        <div class="mdl-layout--large-screen-only mdl-layout__header-row">
+          <h3>Autonomous</h3>
+        </div>
+        <div class="mdl-layout--large-screen-only mdl-layout__header-row">
+        </div>
+
+        <!-- Tabs -->
+      <div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--primary-dark">
+        <a href="#scroll-tab-1" class="mdl-layout__tab is-active">Sobre</a>
+      </div>
+    </header>
+
+    <!-- Conteudo -->
+    <main class="mdl-layout__content">
+      <div class="mdl-layout__tab-panel is-active" id="sobre">
+        <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+              <div class="mdl-card mdl-cell mdl-cell--12-col">
+                <div class="mdl-card__supporting-text">
+                  <h4>WebService</h4>
+                  <p>Este repositório tem como propósito servir como base de dados para a aplicação principal mobile, desenvolvido na linguagem Python, utiliza-se das frameworks Django e Django Rest Framework.</p>
+                <hr/>
+                  <h4>Como obter acesso ?</h4>
+                  <p>Para obter acesso aos arquivos json, é necessário saber qual tabela do banco quer ter acesso,
+                    insira o nome no final da url.
+                    phomint.pythonanywhere.com/'nomedatabela'
+                  </p>
+
+                  <h6>Exemplo:</h6>
+                  <h6>phomint.pythonanywhere.com/autonomos</h6>
+                  <p>Agora basta ler quais metodos estão disponiveis para essa tabela e utiliza-los</p>
+                <hr/>
+                <h4>Contribua para o projeto</h4>
+                <p>Para contribuir acesse o código fonte do projeto, em seguida de um fork do projeto para sua maquina.</p>
+                <p>Agora com o projeto em mãos verifique se tem instalado em sua maquina os requisitos básicos do projeto.</p>
+                <ul>
+                  <li>Django 2.0.7</li>
+                  <li>Django Rest Framework 3.8.2</li>
+                  <li>Pillow 5.2.0</li>
+                  <li>pkg-resources 0.0.0</li>
+                  <li>pytz 2018.5</li>
+                </ul>
+                <p>Agora que verificou os requisitos, instale uma Virtual Environment e inicialize ela dentro do projeto.</p>
+                <h5>Windows</h5>
+                <h6>C:\Users\Name\Autonomous> python -m venv myvenv</h6>
+                <h5>Linux e OS X</h5>
+                <h6>$ python3 -m venv myvenv</h6>
+                <p>Depois de fazer suas alterações para o projeto volte a página do código fonte solicite um 'pull request'</p>
+                </div>
+                <div class="mdl-card__actions">
+                  <a href="https://www.djangoproject.com/" class="mdl-button">Saiba Mais</a>
+                </div>
+
+              </div>
+
+            </section>
+    </div>
+    </main>
+
+
+  <footer class="mdl-mini-footer">
+  <div class="mdl-mini-footer__left-section">
+    <div class="mdl-logo">Autonomous</div>
+    <ul class="mdl-mini-footer__link-list">
+      <li><a href="#">By Patrick Amaral</a></li>
+      <li><a href="https://github.com/Phomint/Autonomous/blob/master/LICENSE">License</a></li>
+
+    </ul>
+  </div>
+  </footer>
+  </div>
+  <a href="https://github.com/phomint/autonomous" target="_blank" id="view-source" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--accent mdl-color-text--accent-contrast">Código Fonte</a>
+  <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+  </body>
+
+</html>
