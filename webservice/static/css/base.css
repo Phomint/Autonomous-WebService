@@ -82,7 +82,7 @@ html, body {
 .mdl-demo section.section--center {
   max-width: 860px;
 }
-.mdl-demo .mdl-layout__tab-panel:not(#overview) {
+.mdl-demo .mdl-layout__tab-panel:not(#sobre) {
   background-color: white;
 }
 .mdl-demo section.section--footer {
