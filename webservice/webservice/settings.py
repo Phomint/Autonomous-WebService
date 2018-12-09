@@ -27,6 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['phomint.pythonanywhere.com','localhost']
 
+CORS_ORIGIN_ALLOW_ALL = True
 
 # Application definition
 
@@ -37,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    #Terceiros
     'rest_framework',
     'rest_framework.authtoken',
     'rest_auth',
@@ -44,6 +46,8 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'allauth',
     'allauth.account',
+    'corsheaders',
+    #Meus apps
     'autonomo',
     'servico',
     'api',
@@ -64,6 +68,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    #Terceiros
+    'corsheaders.middleware.CorsMiddleware',
+
 ]
 
 ROOT_URLCONF = 'webservice.urls'
