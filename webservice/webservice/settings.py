@@ -49,7 +49,6 @@ INSTALLED_APPS = [
     'corsheaders',
     #Meus apps
     'autonomo',
-    'servico',
     'api',
 ]
 SITE_ID = 1
