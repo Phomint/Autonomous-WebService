@@ -49,12 +49,15 @@
               <p>Este repositório tem como propósito servir como base de dados para a aplicação principal mobile, desenvolvido na linguagem Python, utiliza-se das frameworks Django e Django Rest Framework.</p>
               <hr />
               <h4>Como obter acesso ?</h4>
-              <p>Para obter acesso aos arquivos json, é necessário saber qual tabela do banco quer ter acesso,
-                insira o nome no final da url.
-                phomint.pythonanywhere.com/'nomedatabela'
+              <p>Para obter acesso aos arquivos json, você pode navegar pela rotas definidas e obter se utilizar dos
+                metodos GET, POST, UPDATE, DELETE. Em sua aplicação você definira quais caminhos e como vai obter e
+                instanciar os dados.
               </p>
-              <h6>Exemplo:</h6>
-              <h6>phomint.pythonanywhere.com/autonomos</h6>
+              <h5>ROTAS</h5>
+              <ul>
+                <li>api/autonomos/</li>
+                <li>api/autonomos/<#id>/</li>
+              </ul>
               <p>Para login foi usado Django Rest Auth então utilize os padrões 'user', 'login', 'logout',
                 para registrar foi colocado uma extenção do Rest Auth mas continua como 'registrar'.
                 Agora basta ler quais metodos estão disponiveis para essa tabela e utiliza-los.</p>
@@ -62,33 +65,19 @@
               <h4>Contribua para o projeto</h4>
               <p>Para contribuir acesse o código fonte do projeto, em seguida de um fork do projeto para sua máquina.</p>
               <p>Agora que verificou os requisitos, instale uma Virtual Environment e inicialize ela dentro do projeto.</p>
-              <h5>Windows</h5>
-              <h6>C:\Users\Name\Autonomous> python -m venv myvenv</h6>
-              <h5>Linux e OS X</h5>
-              <h6>$ python3 -m venv myvenv</h6>
-              <p>Agora com o projeto em mãos, verifique se tem instalado em sua máquina os requisitos básicos do projeto.</p>
-              <ul>
-                <li>certifi==2018.4.16</li>
-                <li>chardet==3.0.4</li>
-                <li>defusedxml==0.5.0</li>
-                <li>Django==2.0.7</li>
-                <li>django-allauth==0.36.0</li>
-                <li>django-rest-auth==0.9.3</li>
-                <li>djangorestframework==3.8.2</li>
-                <li>idna==2.7</li>
-                <li>oauthlib==2.1.0</li>
-                <li>Pillow==5.2.0</li>
-                <li>pkg-resources==0.0.0</li>
-                <li>python3-openid==3.1.0</li>
-                <li>pytz==2018.5</li>
-                <li>requests==2.19.1</li>
-                <li>requests-oauthlib==1.0.0</li>
-                <li>six==1.11.0</li>
-                <li>urllib3==1.23</li>
-              </ul>
-              <p>Para instalar todos o requisitos de forma rápida, verifique se está no diretório do projeto e utilize o comando:</p>
-              <h6>$ pip install -r requirements.txt</h6>
-
+              <h5>Windows, Linux e OS X</h5>
+              <code>
+                <br>$ git clone https://github.com/Phomint/Autonomous-WebService
+                <br>$ cd Autonomous-WebService
+                <br>$ virtualenv myvenv -p python3
+                <br>$ source myvenv/bin/activate
+                <br>$ pip install -r requirements.txt
+                <br>$ cd webservice
+                <br>$ python manage.py makemigrations
+                <br>$ python manage.py migrate
+                <br>$ python manage.py runserver
+              </code>
+              <br><br>
               <p>Depois de fazer suas alterações para o projeto volte a página do código fonte solicite um 'pull request'</p>
 
             </div>

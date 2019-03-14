@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import Autonomo
+
+from .models import Autonomo, Avaliacao
 
 admin.site.register(Autonomo)
-# Register your models here.
+admin.site.register(Avaliacao)

@@ -1,16 +1,17 @@
-from django.shortcuts import render
+from rest_framework.decorators import action
 
-from .models import Autonomo
-from .serializer import AutonomoSerializer
+from .models import Autonomo, Avaliacao
+from .serializer import AutonomoSerializer, AvaliacaoSerializer
 
-from rest_framework import status
+from rest_framework import status, viewsets
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
 
+
 class AutonomoList(APIView):
     serializer_class = AutonomoSerializer
-
+    queryset = Autonomo.objects.all()
     def get(self, request, format=None):
         serializer = self.serializer_class(Autonomo.objects.all(), many = True)
         return Response(serializer.data)
@@ -23,6 +24,7 @@ class AutonomoList(APIView):
         else:
             return Response({"message":"403 Forbidden"}, status=status.HTTP_409_CONFLICT)
 
+
 class AutonomoView(APIView):
     serializer_class = AutonomoSerializer
 
@@ -30,7 +32,7 @@ class AutonomoView(APIView):
         try:
             return Autonomo.objects.get(pk=pk)
         except Autonomo.DoesNotExist:
-            raise Http404
+            raise Response({"error": "Objeto autonomo não encontrado"}, status=404)
 
     def get(self, request, pk, format=None):
         autonomo = self.get_object(pk)
